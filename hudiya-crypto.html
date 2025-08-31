@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUDIYA (HUD) Token</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* General */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      line-height: 1.5;
+      color: #000;
+      background: #fff;
+    }
+    a { text-decoration: none; color: #000; }
+    a:hover { color: #ff69b4; }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #000;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 5px 10px;
+      font-weight: 600;
+      color: #fff;
+      font-size: 1em;
+    }
+
+    /* Header */
+    header {
+      background: #ff69b4;
+      color: #fff;
+      padding: 30px 15px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 10px 0 5px 0;
+      font-size: 2em;
+    }
+    header p {
+      font-size: 1em;
+      margin-top: 5px;
+    }#logo {
+  width: 150px;        /* adjust width as needed */
+  margin: 20px auto;   /* center horizontally with some spacing */
+}
+
+#logo img {
+  width: 100%;         /* make it responsive */
+  height: auto;        /* preserve aspect ratio */
+  display: block;      /* remove inline spacing */
+  border-radius: 50%;  /* optional, if you want circular logo */
+}
+
+
+    /* Sections */
+    section {
+      padding: 20px 10px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #ff69b4;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ff69b4;
+      display: inline-block;
+      padding-bottom: 5px;
+      font-size: 1.4em;
+    }
+    h3 { margin-top: 10px; }
+
+    /* Tables */
+    .table-container { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      min-width: 500px;
+    }
+    table, th, td { border: 1px solid #ff69b4; }
+    th {
+      background-color: #ff69b4;
+      color: #fff;
+      padding: 8px;
+      text-align: center;
+    }
+    td { padding: 8px; text-align: center; font-size: 0.9em; }
+
+    /* Roadmap */
+    .roadmap-phase { margin-bottom: 15px; }
+
+    /* Social Links */
+    .social-links {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 1em;
+    }
+    .social-links a {
+      margin: 5px 0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+    }
+    .social-links a i {
+      font-size: 24px;
+      margin-right: 8px;
+    }
+    .social-links a:hover { color: #ff69b4; }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6em; }
+      header p { font-size: 0.9em; }
+      nav a { font-size: 0.9em; margin: 5px; }
+      table { font-size: 0.85em; }
+      .social-links a i { font-size: 22px; margin-right: 6px; }
+    }
+
+    @media (max-width: 400px) {
+      header h1 { font-size: 1.4em; }
+      header p { font-size: 0.85em; }
+      #logo { width: 80px; height: 80px; margin-bottom: 10px; }
+      nav a { font-size: 0.85em; }
+      table { font-size: 0.8em; }
+      .social-links a { font-size: 0.9em; }
+      .social-links a i { font-size: 20px; margin-right: 5px; }
+    }
+
+    @media (max-width: 320px) {
+      header h1 { font-size: 1.2em; }
+      header p { font-size: 0.8em; }
+      #logo { width: 70px; height: 70px; }
+      nav a { font-size: 0.8em; }
+      table { font-size: 0.75em; min-width: 400px; }
+      .social-links a i { font-size: 18px; margin-right: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#tokenomics">Tokenomics</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#team">Team</a>
+    <a href="#risks">Risks</a>
+    <a href="#community">Community</a>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <div id="logo">
+      <img src="assets/mylogo.png" alt="HUDIYA Logo">
+    </div>
+    <h1>HUDIYA (HUD) Token</h1>
+    <p>A Community-Driven Crypto Token from Africa</p>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About HUDIYA</h2>
+    <p>HUDIYA (HUD) is a utility token built on the BNB Smart Chain (BEP-20), designed to enable decentralized financial participation, foster innovation, and support community-led growth across Africa.</p>
+    <h3>Vision</h3>
+    <p>To provide a decentralized digital asset that enables financial empowerment, real-world utility, and global participation, originating from Africa.</p>
+    <h3>Mission</h3>
+    <p>Create a scarce, reliable token that connects innovators, investors, and blockchain users, fostering adoption and tangible value creation.</p>
+  </section>
+
+  <!-- Tokenomics -->
+  <section id="tokenomics">
+    <h2>Tokenomics</h2>
+    <div class="table-container">
+      <table>
+        <tr><th>Allocation</th><th>Amount (HUD)</th><th>Percentage</th><th>Purpose</th></tr>
+        <tr><td>🔓 Liquidity</td><td>12.5</td><td>~0%</td><td>Initial live trading liquidity</td></tr>
+        <tr><td>👤 Founder</td><td>6,100,000</td><td>10%</td><td>Personal ownership</td></tr>
+        <tr><td>📣 Marketing/Airdrops</td><td>3,050,000</td><td>5%</td><td>Community building & awareness</td></tr>
+        <tr><td>🏦 Team & Management</td><td>4,575,000</td><td>7.5%</td><td>Salaries, bonuses, collaborators</td></tr>
+        <tr><td>📈 CEX Listings</td><td>27,450,000</td><td>45%</td><td>Reserved for big exchange listings</td></tr>
+        <tr><td>🌍 Community Growth</td><td>19,824,987.5</td><td>32.5%</td><td>Partnerships, staking, farming, liquidity</td></tr>
+        <tr><th>Total</th><th>61,000,000</th><th>100%</th><th>—</th></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section id="roadmap">
+    <h2>Roadmap</h2>
+    <div class="roadmap-phase">
+      <h3>Phase 1 (Current – Q4 2025)</h3>
+      <ul>
+        <li>Smart contract deployment & verification</li>
+        <li>White paper release</li>
+        <li>Initial liquidity provision</li>
+        <li>Community engagement & social channels</li>
+        <li>Strategic partnerships</li>
+      </ul>
+    </div>
+    <div class="roadmap-phase">
+      <h3>Phase 2 (2026)</h3>
+      <ul>
+        <li>Listing on CoinGecko and CoinMarketCap</li>
+        <li>MVP development</li>
+        <li>Staking and loyalty programs</li>
+        <li>Tier 2/3 exchange listings</li>
+      </ul>
+    </div>
+    <div class="roadmap-phase">
+      <h3>Phase 3 (2027+)</h3>
+      <ul>
+        <li>Full HUDIYA ecosystem rollout</li>
+        <li>Top-tier exchange listing (e.g., Binance)</li>
+        <li>Expand real-world use cases</li>
+        <li>Support community-led innovation</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team">
+    <h2>Team & Expansion</h2>
+    <p><strong>Prince Jonathan</strong> – Founder & Lead Visionary. Future expansion includes blockchain developers, marketers, community managers, and business developers aligned with HUDIYA's mission.</p>
+  </section>
+
+  <!-- Risks -->
+  <section id="risks">
+    <h2>Risks</h2
+      <section id="risks">
+        <h2>Risks</h2>
+        <ul>
+          <li><strong>Market Volatility:</strong> Prices may fluctuate due to market sentiment and global economic factors.</li>
+          <li><strong>Regulatory Changes:</strong> New regulations may impact operations.</li>
+          <li><strong>Competition:</strong> The crypto space is highly competitive.</li>
+          <li><strong>Technological Risks:</strong> Smart contract vulnerabilities; future integrations will undergo audits.</li>
+          <li><strong>Execution Risk:</strong> Success depends on team growth, funding, adoption, and adaptability.</li>
+        </ul>
+      </section>
+    
+      <!-- Community & Contact -->
+      <section id="community">
+        <h2>Community & Contact</h2>
+        <div class="social-links">
+          <a href="https://instagram.com/hudiya.crypto" target="_blank">
+            <i class="fab fa-instagram"></i> @hudiya.crypto
+          </a>
+          <a href="https://twitter.com/hudiya_crypto" target="_blank">
+            <i class="fab fa-twitter"></i> @hudiya_crypto
+          </a>
+          <a href="mailto:hudiya.crypto@gmail.com">
+            <i class="fas fa-envelope"></i> hudiya.crypto@gmail.com
+          </a>
+        </div>
+      </section>
+    
+      <!-- Footer -->
+      <footer>
+        <p id="copyright"></p>
+      </footer>
+    
+      <script>
+        // Smooth scroll for navbar
+        document.querySelectorAll('nav a').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+            });
+          });
+        });
+    
+        // Dynamic Copyright
+        const currentYear = new Date().getFullYear();
+        const today = new Date();
+        const isJan1 = today.getMonth() === 0 && today.getDate() === 1;
+        document.getElementById('copyright').innerText =
+          `© ${currentYear} HUDIYA. Not financial advice. DYOR.${isJan1 ? " 🎉 Happy New Year!" : ""}`;
+      </script>
+    </body>
+    </html>
+    
