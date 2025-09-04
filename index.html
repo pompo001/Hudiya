@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     /* General */
@@ -48,32 +48,13 @@
       padding: 30px 15px;
       text-align: center;
     }
-    header h1 {
-      margin: 10px 0 5px 0;
-      font-size: 2em;
-    }
-    header p {
-      font-size: 1em;
-      margin-top: 5px;
-    }#logo {
-  width: 150px;        /* adjust width as needed */
-  margin: 20px auto;   /* center horizontally with some spacing */
-}
-
-#logo img {
-  width: 100%;         /* make it responsive */
-  height: auto;        /* preserve aspect ratio */
-  display: block;      /* remove inline spacing */
-  border-radius: 50%;  /* optional, if you want circular logo */
-}
-
+    header h1 { margin: 10px 0 5px 0; font-size: 2em; }
+    header p { font-size: 1em; margin-top: 5px; }
+    #logo { width: 150px; margin: 20px auto; }
+    #logo img { width: 100%; height: auto; display: block; border-radius: 50%; }
 
     /* Sections */
-    section {
-      padding: 20px 10px;
-      max-width: 900px;
-      margin: auto;
-    }
+    section { padding: 20px 10px; max-width: 900px; margin: auto; }
     h2 {
       color: #ff69b4;
       margin-bottom: 15px;
@@ -85,12 +66,13 @@
     h3 { margin-top: 10px; }
 
     /* Tables */
-    .table-container { overflow-x: auto; }
+    .table-container { overflow-x: hidden; } /* Hide horizontal scroll */
     table {
       width: 100%;
       border-collapse: collapse;
       margin: 15px 0;
-      min-width: 500px;
+      table-layout: fixed; /* Evenly distribute columns */
+      word-wrap: break-word;
     }
     table, th, td { border: 1px solid #ff69b4; }
     th {
@@ -111,18 +93,62 @@
       font-size: 1em;
     }
     .social-links a {
-      margin: 5px 0;
+      margin: 8px 0;
       font-weight: 600;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       color: #000;
+      gap: 8px;
     }
-    .social-links a i {
-      font-size: 24px;
-      margin-right: 8px;
-    }
+    .social-links a i { font-size: 22px; }
     .social-links a:hover { color: #ff69b4; }
+
+    /* Team Card */
+.team-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: flex-start;
+  flex-wrap: nowrap; /* prevent stacking */
+}
+.profile-pic-front {
+  flex-shrink: 0;
+}
+.profile-pic-front img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ff69b4;
+}
+.team-info {
+  max-width: 600px;
+  text-align: left;
+}
+
+/* Responsive: smaller profile pic on mobile */
+@media (max-width: 600px) {
+  .profile-pic-front img {
+    width: 90px;
+    height: 90px;
+  }
+  .team-info p {
+    font-size: 0.9em;
+  }
+}
+
+    /* White Paper Button */
+    .download-btn {
+      display: inline-block;
+      background: #ff69b4;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    .download-btn:hover { background: #ff4d9b; }
 
     /* Footer */
     footer {
@@ -132,6 +158,7 @@
       padding: 15px;
       font-size: 0.9em;
     }
+    footer a { color: #ff69b4; font-weight: 600; }
 
     /* Responsive */
     @media (max-width: 600px) {
@@ -139,26 +166,32 @@
       header p { font-size: 0.9em; }
       nav a { font-size: 0.9em; margin: 5px; }
       table { font-size: 0.85em; }
-      .social-links a i { font-size: 22px; margin-right: 6px; }
+      .social-links a i { font-size: 20px; }
     }
-
     @media (max-width: 400px) {
       header h1 { font-size: 1.4em; }
       header p { font-size: 0.85em; }
-      #logo { width: 80px; height: 80px; margin-bottom: 10px; }
-      nav a { font-size: 0.85em; }
+      #logo { width: 80px; margin-bottom: 10px; }
       table { font-size: 0.8em; }
       .social-links a { font-size: 0.9em; }
-      .social-links a i { font-size: 20px; margin-right: 5px; }
     }
-
-    @media (max-width: 320px) {
-      header h1 { font-size: 1.2em; }
-      header p { font-size: 0.8em; }
-      #logo { width: 70px; height: 70px; }
-      nav a { font-size: 0.8em; }
-      table { font-size: 0.75em; min-width: 400px; }
-      .social-links a i { font-size: 18px; margin-right: 4px; }
+    @media (max-width: 360px) {
+      /* Stack social links vertically for very small screens */
+      .social-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .social-links a {
+        width: 90%;
+        justify-content: flex-start;
+        padding: 8px 10px;
+        border: 1px solid #ff69b4;
+        border-radius: 6px;
+        text-align: left;
+      }
+      .social-links a i { margin-right: 10px; font-size: 20px; }
     }
   </style>
 </head>
@@ -191,6 +224,21 @@
     <p>To provide a decentralized digital asset that enables financial empowerment, real-world utility, and global participation, originating from Africa.</p>
     <h3>Mission</h3>
     <p>Create a scarce, reliable token that connects innovators, investors, and blockchain users, fostering adoption and tangible value creation.</p>
+
+    <h3>Token Details</h3>
+    <p><strong>Contract Address:</strong> <code>0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e</code> (Verified & Audited)</p>
+    <p>
+      <a href="https://apespace.io/bsc/0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e" target="_blank">
+        <i class="fas fa-external-link-alt"></i> View on ApeSpace
+      </a>
+    </p>
+
+    <!-- White Paper Download -->
+    <p>
+      <a href="assets/whitepaper.pdf" target="_blank" class="download-btn">
+        <i class="fas fa-file-pdf"></i> Download White Paper
+      </a>
+    </p>
   </section>
 
   <!-- Tokenomics -->
@@ -246,62 +294,59 @@
   <!-- Team -->
   <section id="team">
     <h2>Team & Expansion</h2>
-    <p><strong>Prince Jonathan</strong> – Founder & Lead Visionary. Future expansion includes blockchain developers, marketers, community managers, and business developers aligned with HUDIYA's mission.</p>
+    <div class="team-card">
+      <div class="profile-pic-front">
+        <img src="assets/prince.jpg" alt="Prince Jonathan">
+      </div>
+      <div class="team-info">
+        <p><strong>Prince Jonathan</strong> – Founder & Lead Visionary. Future expansion includes blockchain developers, marketers, community managers, and business developers aligned with HUDIYA's mission.</p>
+      </div>
+    </div>
   </section>
 
   <!-- Risks -->
   <section id="risks">
-    <h2>Risks</h2
-      <section id="risks">
-        <h2>Risks</h2>
-        <ul>
-          <li><strong>Market Volatility:</strong> Prices may fluctuate due to market sentiment and global economic factors.</li>
-          <li><strong>Regulatory Changes:</strong> New regulations may impact operations.</li>
-          <li><strong>Competition:</strong> The crypto space is highly competitive.</li>
-          <li><strong>Technological Risks:</strong> Smart contract vulnerabilities; future integrations will undergo audits.</li>
-          <li><strong>Execution Risk:</strong> Success depends on team growth, funding, adoption, and adaptability.</li>
-        </ul>
-      </section>
-    
-      <!-- Community & Contact -->
-      <section id="community">
-        <h2>Community & Contact</h2>
-        <div class="social-links">
-          <a href="https://instagram.com/hudiya.crypto" target="_blank">
-            <i class="fab fa-instagram"></i> @hudiya.crypto
-          </a>
-          <a href="https://twitter.com/hudiya_crypto" target="_blank">
-            <i class="fab fa-twitter"></i> @hudiya_crypto
-          </a>
-          <a href="mailto:hudiya.crypto@gmail.com">
-            <i class="fas fa-envelope"></i> hudiya.crypto@gmail.com
-          </a>
-        </div>
-      </section>
-    
-      <!-- Footer -->
-      <footer>
-        <p id="copyright"></p>
-      </footer>
-    
-      <script>
-        // Smooth scroll for navbar
-        document.querySelectorAll('nav a').forEach(anchor => {
-          anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-              behavior: 'smooth'
-            });
-          });
+    <h2>Risks</h2>
+    <ul>
+      <li><strong>Market Volatility:</strong> Prices may fluctuate due to market sentiment and global economic factors.</li>
+      <li><strong>Regulatory Changes:</strong> New regulations may impact operations.</li>
+      <li><strong>Competition:</strong> The crypto space is highly competitive.</li>
+      <li><strong>Technological Risks:</strong> Smart contract vulnerabilities; future integrations will undergo audits.</li>
+      <li><strong>Execution Risk:</strong> Success depends on team growth, funding, adoption, and adaptability.</li>
+    </ul>
+  </section>
+
+  <!-- Community & Contact -->
+  <section id="community">
+    <h2>Community & Contact</h2>
+    <div class="social-links">
+      <a href="https://instagram.com/hudiya.crypto" target="_blank"><i class="fab fa-instagram"></i> @hudiya.crypto</a>
+      <a href="https://twitter.com/hudiya_crypto" target="_blank"><i class="fab fa-twitter"></i> @hudiya_crypto</a>
+      <a href="mailto:hudiya.crypto@gmail.com"><i class="fas fa-envelope"></i> hudiya.crypto@gmail.com</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© <span id="year"></span> HUDIYA. Not financial advice. DYOR. | 
+      <a href="https://apespace.io/bsc/0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e" target="_blank">Verified on ApeSpace</a>
+    </p>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
-    
-        // Dynamic Copyright
-        const currentYear = new Date().getFullYear();
-        const today = new Date();
-        const isJan1 = today.getMonth() === 0 && today.getDate() === 1;
-        document.getElementById('copyright').innerText =
-          `© ${currentYear} HUDIYA. Not financial advice. DYOR.${isJan1 ? " 🎉 Happy New Year!" : ""}`;
-      </script>
-    </body>
-    </html>
-    
+      });
+    });
+
+    // Dynamic Year and New Year Message
+    const year = new Date().getFullYear();
+    document.getElementById('year').innerText = `${year} - Happy New Year!`;
+  </script>
+</body>
+</html>
