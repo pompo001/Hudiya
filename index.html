@@ -382,47 +382,63 @@ window.addEventListener('scroll', function() {
   lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
   </script>
-  <script>
-    // Smooth scroll
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.7.8/dist/umd/index.min.js"></script>
+<script>
+  const claimContractAddress = "0x60451abd7acbCfD35740C9318431bfE509C0c696";
+  const claimAbi = [
+    { "inputs": [], "name": "claim", "outputs": [], "stateMutability": "nonpayable", "type": "function" }
+  ];
+
+  const claimButton = document.getElementById('claimButton');
+  const claimStatus = document.getElementById('claimStatus');
+
+  async function claimHUD() {
+    let web3;
+    let accounts;
+
+    // 1. Desktop / Mobile MetaMask
+    if (window.ethereum) {
+      try {
+        await ethereum.request({ method: 'eth_requestAccounts' });
+        web3 = new Web3(window.ethereum);
+        accounts = await web3.eth.getAccounts();
+      } catch (err) {
+        claimStatus.innerText = "❌ User denied wallet connection.";
+        return;
+      }
+    }
+    // 2. WalletConnect for mobile / other wallets
+    else {
+      const provider = new WalletConnectProvider.default({
+        rpc: {
+          56: "https://bsc-dataseed.binance.org/" // BSC mainnet
+        },
       });
-    });
-
-    // Dynamic Year and New Year Message
-    const year = new Date().getFullYear();
-    document.getElementById('year').innerText = `${year} - Happy New Year!`;
-  // Web3 Claim Script
-    const claimContractAddress = "0x60451abd7acbCfD35740C9318431bfE509C0c696"; // Your deployed claim contract
-    const claimAbi = [
-      { "inputs": [], "name": "claim", "outputs": [], "stateMutability": "nonpayable", "type": "function" }
-    ];
-
-    const claimButton = document.getElementById('claimButton');
-    const claimStatus = document.getElementById('claimStatus');
-
-    async function claimHUD() {
-      if (window.ethereum) {
-        try {
-          await ethereum.request({ method: 'eth_requestAccounts' });
-          const web3 = new Web3(window.ethereum);
-          const contract = new web3.eth.Contract(claimAbi, claimContractAddress);
-          const accounts = await web3.eth.getAccounts();
-          claimStatus.innerText = "Processing claim...";
-          await contract.methods.claim().send({ from: accounts[0] });
-          claimStatus.innerText = "✅ HUD claimed successfully!";
-        } catch (error) {
-          console.error(error);
-          claimStatus.innerText = "❌ Claim failed: " + error.message;
-        }
-      } else {
-        alert("Please install MetaMask to claim HUD tokens.");
+      try {
+        await provider.enable();
+        web3 = new Web3(provider);
+        accounts = await web3.eth.getAccounts();
+      } catch (err) {
+        claimStatus.innerText = "❌ Wallet connection failed.";
+        return;
       }
     }
 
-    claimButton.addEventListener('click', claimHUD);
-  </script>
+    // Claim tokens
+    try {
+      const contract = new web3.eth.Contract(claimAbi, claimContractAddress);
+      claimStatus.innerText = "⏳ Processing claim...";
+      await contract.methods.claim().send({ from: accounts[0] });
+      claimStatus.innerText = "✅ HUD claimed successfully!";
+    } catch (err) {
+      console.error(err);
+      claimStatus.innerText = "❌ Claim failed: " + (err.message || err);
+    }
+  }
+
+  claimButton.addEventListener('click', claimHUD);
+</script>
+
 </body>
 </html>
