@@ -59,10 +59,56 @@ header {
   padding: 30px 15px;
   text-align: center;
 }
-header h1 { margin: 10px 0 5px 0; font-size: 2em; color: #e0e0ff; }
-header p { font-size: 1em; margin-top: 5px; color: #f0f0f5; }
-#logo { width: 150px; margin: 20px auto; }
-#logo img { width: 100%; height: auto; display: block; border-radius: 50%; border: 3px solid  }
+/* Header Text */
+header h1 {
+    margin: 10px 0 5px 0;
+    font-size: clamp(1.5em, 5vw, 2em); /* scales from 1.5em up to 2em */
+    color: #e0e0ff;
+    text-align: center;
+}
+
+header p {
+    font-size: clamp(0.9em, 3vw, 1em); /* scales nicely on small screens */
+    margin-top: 5px;
+    color: #f0f0f5;
+    text-align: center;
+}
+
+/* Logo Container */
+#logo {
+    width: 40vw;             /* responsive width based on viewport */
+    max-width: 150px;        /* max size on larger screens */
+    aspect-ratio: 1 / 1;     /* keeps perfect circle */
+    margin: 20px auto;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #ccc;
+    overflow: hidden;
+}
+
+/* Logo Image */
+#logo img {
+    width: 80%;              /* scales inside the circle */
+    height: auto;
+    display: block;
+}
+
+/* Optional: Adjust spacing on very small screens */
+@media (max-width: 320px) {
+    #logo {
+        width: 35vw;         /* slightly smaller circle for tiny screens */
+        margin: 15px auto;
+    }
+    header h1 {
+        margin: 8px 0 4px 0;
+    }
+    header p {
+        margin-top: 4px;
+    }
+}display: block; border-radius: 50%; border: 3px solid  }
 
 /* ===================== SECTIONS ===================== */
 section { padding: 20px 10px; max-width: 900px; margin: auto; }
