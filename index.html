@@ -1,712 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HUDIYA (HUD) CRYPTO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUDIYA (HUD) CRYPTO - Pink Accent</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="hudiyafinance.site" />
-  <link rel="manifest" href="/site.webmanifest" />
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
 <style>
-/* --- GLOBAL RESET & THEME --- */
+:root {
+    --color-pink-primary: #ff69b4;
+    --color-pink-secondary: #d6338a;
+    --color-light-pink: #ffeef2;
+    --color-white: #ffffff;
+    --color-dark: #1c1c1e;
+}
+
+/* --- GLOBAL STYLES --- */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     line-height: 1.6;
-    color: #1c1c1e; /* Darker, modern text color */
-    background: linear-gradient(135deg, #f7f7f7 0%, #ffffff 50%, #f0f0f5 100%); /* Lighter, cleaner background */
+    color: var(--color-dark);
+    background: linear-gradient(135deg, var(--color-light-pink) 0%, var(--color-white) 50%, #f0f0f5 100%);
     scroll-behavior: smooth;
-    padding-top: 80px; /* Space for the fixed nav bar */
-    -webkit-font-smoothing: antialiased;
+    padding-top: 20px;
 }
-
-/* Links */
 a { 
     text-decoration: none; 
-    color: #ff3864; /* Brighter pink/red */
-    transition: 0.3s ease; 
+    color: var(--color-pink-secondary);
+    transition: 0.3s; 
     font-weight: 600; 
 }
-a:hover { 
-    color: #cc0033; 
-}
-
-/* Headings */
-h2 {
-    color: #ff3864; 
-    font-size: 2.2em; /* Slightly larger */
-    font-weight: 700;
+a:hover { color: var(--color-pink-primary); }
+h1, h2, h3 { font-weight: 700; }
+h2 { 
+    color: var(--color-pink-secondary);
     margin-bottom: 25px;
-    border-bottom: 3px solid #ffe3e9; /* Subtle underline */
-    padding-bottom: 8px;
-    display: inline-block;
+    font-size: 2em;
 }
-h3 {
-    color: #333;
-    font-size: 1.4em;
-    margin-top: 0;
-}
+h3 { margin-top: 20px; color: var(--color-pink-secondary); }
+p { margin-bottom: 15px; }
 
-/* --- NAVIGATION (Refined Glassmorphism) --- */
-nav {
+/* --- NAVIGATION --- */
+.mobile-nav-wrapper {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.85); /* Slightly less transparent */
-    backdrop-filter: blur(25px) saturate(200%);
-    -webkit-backdrop-filter: blur(25px) saturate(200%);
-    border-radius: 30px; /* More rounded */
-    max-width: 95%;
-    width: fit-content;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     z-index: 1000;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    padding: 10px 20px;
+    width: fit-content;
+    max-width: 95%;
     transition: top 0.3s ease, opacity 0.3s ease;
 }
-nav.hidden {
-    top: -100px;
-    opacity: 0;
+.mobile-nav-wrapper.hidden { top: -100px; opacity: 0; }
+
+nav {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    border-radius: 30px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.9);
+    padding: 8px 15px;
+    display: flex;
+    transition: all 0.3s ease;
 }
 nav a {
-    margin: 5px 12px;
-    color: #1c1c1e;
+    margin: 0 6px;
+    color: var(--color-dark);
     font-weight: 600;
-    padding: 8px 10px;
+    padding: 8px 12px;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
     transition: background 0.2s;
 }
-nav a:hover { 
-    color: #ffffff;
-    background: #ff3864; /* Solid background on hover */
-}
+nav a i { font-size: 1.1em; color: var(--color-pink-primary); margin-right: 5px; }
+nav a:hover { color: var(--color-white); background: var(--color-pink-primary); }
+nav a:hover i { color: var(--color-white); }
 
-/* --- HERO SECTION --- */
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    background: linear-gradient(160deg, #ffdee9 0%, #b5f6ff 100%); /* Modern, pastel gradient */
-    border-radius: 40px;
-    max-width: 1100px;
-    margin: 60px auto;
-    padding: 80px 50px; /* Increased padding */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-.hero-content {
-    flex: 1 1 400px;
-    padding-right: 40px;
-}
-.hero-content h1 {
-    font-size: clamp(3em, 7vw, 4.5em);
-    color: #cc0033;
-    line-height: 1.1;
-    margin-bottom: 20px;
-}
-.hero-content p {
-    font-size: 1.3em;
-    color: #444;
-    margin-bottom: 35px;
-}
-.hero-content .btn-primary {
-    background: linear-gradient(90deg, #ff3864, #5c62ff); /* Stronger button gradient */
+#nav-toggle {
+    display: none;
+    background: linear-gradient(90deg, var(--color-pink-primary), var(--color-pink-secondary));
     color: white;
-    padding: 16px 36px;
-    border-radius: 40px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    box-shadow: 0 8px 25px rgba(255,56,100,0.5);
-}
-.hero-content .btn-primary:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(255,56,100,0.7);
-}
-
-.hero-image {
-    flex: 1 1 400px;
-    text-align: center;
-}
-.hero-image img {
-    max-width: 100%; /* Better fit on smaller screens */
-    border-radius: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    animation: float 5s ease-in-out infinite;
-}
-
-/* Float animation (remains the same) */
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-}
-
-/* --- HEADER (Soft Bubble Section) --- */
-header {
-    background: linear-gradient(160deg, #f7f7f7 0%, #fff0f5 100%);
-    color: #1a1a1a;
-    padding: 50px 20px;
-    text-align: center;
-    border-radius: 40px;
-    margin: 30px auto;
-    max-width: 900px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-}
-header h1 { color: #ff3864; margin: 10px 0; font-size: clamp(2.5em, 8vw, 3.5em); }
-header p { color: #555; font-size: clamp(1.1em, 3vw, 1.4em); }
-
-/* Logo */
-#logo {
-    width: 140px; /* Slightly larger logo area */
-    height: 140px;
+    padding: 12px 16px;
+    border: none;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ffffff, #ffe3e9);
-    box-shadow: 0 0 50px rgba(255, 56, 100, 0.3);
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255,105,180,0.4);
+    transition: transform 0.2s;
+}
+#nav-toggle:active { transform: scale(0.95); }
+
+/* --- HERO HEADER --- */
+header {
+    background: linear-gradient(160deg, #ffc7d5 0%, #fef6fa 100%);
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 40px;
+    margin: 60px auto 30px auto;
+    max-width: 900px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+#logo {
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-white), #f0f0f0);
     margin: 15px auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: center; align-items: center;
     overflow: hidden;
 }
+#logo img { width: 100%; height: 100%; object-fit: contain; padding: 15%; }
 
-/* --- SECTIONS (Clean Cards) --- */
+/* --- SECTIONS --- */
 section {
     max-width: 900px;
     margin: 50px auto;
-    padding: 40px;
-    background: #ffffff; /* Solid white background for content area */
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-/* Cards (Roadmap/Team) */
-.roadmap-phase, .team-card {
-    background: #fcfcfc;
-    border: 1px solid #eee;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    margin-bottom: 20px;
-}
-
-/* List Style */
-ul { padding-left: 20px; list-style-type: none; }
-ul li { 
-    margin-bottom: 12px; 
-    color: #333; 
-    position: relative;
-    padding-left: 20px;
-}
-ul li::before {
-    content: "•";
-    color: #ff3864; 
-    font-weight: 900;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-}
-
-/* Utility & Ecosystem List */
-.utility-list, .ecosystem-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Min size adjusted */
-    gap: 15px;
-}
-.utility-list li, .ecosystem-list li {
-    background: #fff8f9; /* Lighter background for list items */
-    padding: 20px;
-    border-radius: 10px;
-    font-weight: 600;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.03);
-    display: flex;
-    align-items: center;
-}
-.utility-list li i, .ecosystem-list li i {
-    color: #ff3864;
-    margin-right: 15px;
-    font-size: 1.5em;
-}
-
-/* Table */
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    overflow: hidden;
-    border-radius: 15px;
-}
-th {
-    background: linear-gradient(90deg, #ff3864, #cc0033);
-    color: #fff;
-    padding: 15px; /* Increased padding */
-    text-align: center;
-    font-size: 1.1em;
-}
-tr:nth-child(even) td { background-color: #f9f9f9; }
-td {
-    border: none;
-    border-bottom: 1px solid #f0f0f0;
-    padding: 12px 10px;
-    text-align: center;
-}
-tr:last-child td { border-bottom: none; }
-/* Table Totals Row (The last tr, used for the Total line) */
-.tokenomics-table tr:last-child {
-    font-weight: 700;
-    background: #fff0f5; /* Light pink background for total */
-    border-top: 2px solid #ff3864;
-}
-.tokenomics-table tr:last-child td {
-    color: #1c1c1e;
-}
-
-
-/* --- BUTTONS --- */
-.download-btn, #claim button {
-    background: linear-gradient(90deg, #ff3864, #cc0033);
-    padding: 15px 30px;
+    padding: 50px 30px;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(15px);
     border-radius: 30px;
-    font-weight: 700;
-    color: #ffffff;
-    box-shadow: 0 6px 18px rgba(255,56,100,0.5);
-    border: none;
-    display: inline-block;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid rgba(255,255,255,0.9);
 }
-.download-btn:hover, #claim button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(255,56,100,0.7);
-}
+.utility-list, .ecosystem-list { list-style: none; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+.utility-list li, .ecosystem-list li { background: var(--color-light-pink); padding:18px; border-radius:15px; font-weight:600; box-shadow:0 2px 8px rgba(0,0,0,0.05); display:flex; align-items:center; }
+.utility-list li i, .ecosystem-list li i { color: var(--color-pink-secondary); margin-right:15px; font-size:1.4em; }
 
-/* Social Links */
-.social-links { margin-top: 20px; }
-.social-links a {
-    margin: 0 15px;
-    color: #1c1c1e;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 500;
-}
-.social-links a i {
-    font-size: 1.5em;
-    color: #ff3864;
-}
-.social-links a:hover { 
-    color: #ff3864; 
-    transform: translateY(-2px);
-}
+/* --- TOKENOMICS TABLE --- */
+table { width:100%; border-collapse: separate; border-spacing:0; overflow:hidden; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.05); }
+th { background: linear-gradient(90deg, var(--color-pink-primary), var(--color-pink-secondary)); color: var(--color-white); padding:15px 12px; text-align:center; font-weight:700; }
+tr:nth-child(even) td { background-color:#fff8f9; }
+td { border:none; border-bottom:1px solid #f0f0f0; padding:12px 8px; text-align:center; }
+.tokenomics-table tr.total-row { background: linear-gradient(90deg, var(--color-pink-primary), var(--color-pink-secondary)); font-weight:700; color:var(--color-white); }
+.tokenomics-table tr.total-row td { border-bottom:none; color:inherit; }
 
-/* Footer */
-footer {
-    background: #e9e9f0; /* Soft, light footer background */
-    color: #555;
-    text-align: center;
-    padding: 25px 15px;
-    font-size: 0.9em;
-    border-top: 1px solid #ddd;
-    margin-top: 60px;
-}
-footer a { color: #ff3864; font-weight: 600; }
+/* --- FOOTER --- */
+footer { background: rgba(255,255,255,0.7); backdrop-filter:blur(10px); color:#555; text-align:center; padding:25px 15px; font-size:0.9em; border-top:1px solid rgba(255,255,255,0.5); margin-top:50px; }
+.social-links { margin: 15px 0; display:flex; justify-content:center; gap:15px; }
+.social-links a { color: var(--color-dark); font-size:1.6em; display:inline-flex; justify-content:center; align-items:center; width:40px; height:40px; border-radius:50%; background-color:#ffc7d5; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+.social-links a:hover { background-color: var(--color-pink-primary); color: var(--color-white); }
 
-/* ------------------------------------------- */
-/* --- MOBILE RESPONSIVENESS (BREAKPOINTS) --- */
-/* ------------------------------------------- */
+/* Download button */
+.download-btn { display:inline-block; padding:10px 20px; background:linear-gradient(45deg,var(--color-pink-primary),var(--color-pink-secondary)); color:var(--color-white)!important; border-radius:25px; font-weight:700; margin-top:15px; }
+.download-btn:hover { background:linear-gradient(45deg,var(--color-pink-secondary),var(--color-pink-primary)); }
 
-/* Standard Tablet/Mobile (768px) */
-@media (max-width: 768px) {
-    body { padding-top: 70px; }
-    
-    /* Navigation cleanup for smaller screens */
-    nav { 
-        padding: 8px 10px; 
-        border-radius: 15px;
-        max-width: 98%;
-    }
-    nav a { 
-        margin: 4px 6px; 
-        font-size: 0.85em; 
-        padding: 6px 8px;
-    }
-    
-    section { padding: 30px 20px; margin: 30px auto; }
-    
-    /* Hero Section adjustment */
-    .hero { 
-        flex-direction: column; 
-        text-align: center; 
-        padding: 50px 20px; 
-        margin: 40px auto;
-    }
-    .hero-content { padding-right: 0; }
-    .hero-content h1 { font-size: 3em; }
-    .hero-content p { font-size: 1.1em; }
-}
-
-/* Mobile Tokenomics Table View (550px and below) */
-@media (max-width: 550px) {
-    /* Tokenomics Table: Card View */
-    .tokenomics-table thead, .tokenomics-table th { display: none; }
-    .tokenomics-table, .tokenomics-table tbody, .tokenomics-table tr { display: block; width: 100%; }
-
-    .tokenomics-table tr {
-        border: 1px solid #ffdee9;
-        margin-bottom: 10px;
-        border-radius: 10px;
-        background: #fff; 
-        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-        padding: 0; /* Remove padding from tr to control padding on td */
-    }
-
-    .tokenomics-table td {
-        display: block;
-        text-align: left;
-        padding: 10px 15px; /* Consistent padding inside cells */
-        border-bottom: 1px solid #f0f0f0;
-    }
-
-    /* Total row styling */
-    .tokenomics-table tr:last-child {
-        background: linear-gradient(90deg, #ff3864, #cc0033);
-        color: white;
-        font-weight: 700;
-        margin-top: 20px;
-    }
-    .tokenomics-table tr:last-child td {
-        text-align: center;
-        border-bottom: none;
-    }
-
-    /* Mobile Labels (data-label) */
-    .tokenomics-table td::before {
-        content: attr(data-label);
-        font-weight: 700;
-        color: #ff3864; /* Pink label color */
-        width: 100px;
-        display: inline-block;
-        margin-right: 15px;
-    }
-    .tokenomics-table tr:last-child td::before {
-        color: white; /* White label color for the total row */
-    }
-}
-
-/* Ultra-Narrow Mobile Screens (380px and below) */
-@media (max-width: 380px) {
-    /* Further reduce nav text size */
-    nav a { 
-        font-size: 0.8em; 
-        margin: 4px 4px; 
-        padding: 5px 6px;
-    }
-
-    /* Reduce label width for very narrow screens */
-    .tokenomics-table td::before {
-        width: 80px; 
-    }
+/* --- MOBILE --- */
+@media(max-width:768px){
+    body { padding-top:70px; }
+    #nav-toggle { display:block; position:fixed; top:15px; right:15px; left:auto; transform:none; }
+    .mobile-nav-wrapper { top:0; left:0; transform:none; width:100%; display:flex; justify-content:flex-end; align-items:flex-start; height:60px; background:none; box-shadow:none; }
+    nav { display:none; position:fixed; top:75px; right:15px; width:200px; flex-direction:column; padding:10px; border-radius:20px; box-shadow:0 8px 25px rgba(0,0,0,0.2); backdrop-filter: blur(25px) saturate(200%); -webkit-backdrop-filter: blur(25px) saturate(200%);}
+    nav.active { display:flex; }
+    nav a { margin:5px 0; width:100%; justify-content:flex-start; padding:12px 15px; background:#fff8f9; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+    nav a:hover { background: var(--color-pink-primary); color:white;}
+    .tokenomics-table thead, .tokenomics-table th { display:none; }
+    .tokenomics-table, .tokenomics-table tbody, .tokenomics-table tr { display:block; width:100%; }
+    .tokenomics-table tr td { display:flex; justify-content:space-between; text-align:right; padding:10px 15px; border-bottom:1px dashed #eee; }
+    .tokenomics-table td::before { content: attr(data-label); font-weight:700; color:var(--color-pink-secondary); flex-grow:1; text-align:left; margin-right:10px; }
+    .tokenomics-table tr.total-row td { display:flex; justify-content:space-between; text-align:right; color:white; padding:10px 15px; border-bottom:none; }
+    .tokenomics-table tr.total-row td::before { content: none; }
 }
 </style>
-
 </head>
+
 <body>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#utility">Utility</a>
-    <a href="#ecosystem">Ecosystem</a>
-    <a href="#tokenomics">Tokenomics</a>
-    <a href="#roadmap">Roadmap</a>
-    <a href="#community">Community</a>
-    <a href="whitepaper/HUD WP.pdf" target="_blank">Whitepaper</a>
-  </nav>
+<!-- NAV -->
+<div class="mobile-nav-wrapper" id="sticky-nav-wrapper">
+    <button id="nav-toggle"><i class="fas fa-bars"></i></button>
+    <nav id="nav-links">
+        <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+        <a href="#utility"><i class="fas fa-cogs"></i> Utility</a>
+        <a href="#ecosystem"><i class="fas fa-globe"></i> Ecosystem</a>
+        <a href="#tokenomics"><i class="fas fa-chart-pie"></i> Tokenomics</a>
+        <a href="#roadmap"><i class="fas fa-map-marked-alt"></i> Roadmap</a>
+        <a href="#community"><i class="fas fa-users"></i> Community</a>
+        <a href="whitepaper/HUD WP.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Whitepaper</a>
+    </nav>
+</div>
 
+<!-- HEADER -->
 <header>
-    <div id="logo">
-        <img src="assets/mylogo1.png" alt="HUDIYA Logo">
-    </div>
-    <h1>HUDIYA (HUD)</h1>
-    <p>The Future of Everyday Digital Transactions</p>
-    <p class="intro-abstract">HUDIYA is a decentralized utility token engineered to solve the market's need for a truly <strong>scarce</strong> and <strong>utility-driven</strong> digital currency. Inspired by the foundational principles of Bitcoin, Binance Coin, and Ethereum, HUD is built on the BNB Smart Chain (BEP-20) with a <strong>fixed total supply of 61 million</strong> for long-term global adoption and payment integration.</p>
+    <div id="logo"><img src="assets/mylogo1.png" alt="HUDIYA Logo"></div>
+    <h1>HUDIYA (HUD)</h1>
+    <p>The Future of Everyday Digital Transactions</p>
+    <p class="intro-abstract">HUDIYA is a decentralized utility token engineered to solve the market's need for a truly <b>scarce</b> and <b>utility-driven</b> digital currency.</p>
 </header>
 
+<!-- ABOUT -->
+<section id="about">
+<h2>About HUDIYA</h2>
+<p>HUDIYA (HUD) is a utility token on BNB Smart Chain focused on becoming a globally trusted medium for digital payments.</p>
+<ul>
+<li><b>Vision:</b> Establish HUDIYA as a globally recognized decentralized utility token.</li>
+<li><b>Mission:</b> Deliver a scarce, secure, transparent currency and ecosystem.</li>
+</ul>
+<p><b>Contract Address:</b> <code>0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e</code></p>
+<p><a href="whitepaper/HUD WP.pdf" target="_blank" class="download-btn"><i class="fas fa-file-pdf"></i> Download Whitepaper</a></p>
+</section>
 
-  <section id="about">
-    <h2>About HUDIYA</h2>
-    <p><strong>HUDIYA (HUD)</strong> is a utility token built on the BNB Smart Chain (BEP-20) focused on becoming a globally trusted medium for digital payments, trading, and community-driven innovation. We believe that money represents trust and value, and the blockchain era redefines this by removing centralized control and enabling open access.</p>
-    <h3>Vision & Mission</h3>
-    <ul>
-      <li><strong>Vision:</strong> To establish HUDIYA as a globally recognized decentralized utility token at the core of a dynamic, transparent, and scalable digital economy.</li>
-      <li><strong>Mission:</strong> To deliver a scarce, secure, and transparent currency while building an environment where users and creators benefit from sustained adoption through innovation.</li>
-    </ul>
-    <h3>Token Details</h3>
-    <p><strong>Contract Address:</strong> <code>0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e</code></p>
-    <p><a href="https://apespace.io/bsc/0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e" target="_blank"><i class="fas fa-external-link-alt"></i> View on ApeSpace</a></p>
-    <p><a href="whitepaper/HUD WP.pdf" target="_blank" class="download-btn"><i class="fas fa-file-pdf"></i> Download Whitepaper</a></p>
-  </section>
+<!-- UTILITY -->
+<section id="utility">
+<h2>Token Utility: The HUD Advantage</h2>
+<ul class="utility-list">
+<li><i class="fas fa-exchange-alt"></i> Medium of Exchange</li>
+<li><i class="fas fa-dollar-sign"></i> Staking & Rewards</li>
+<li><i class="fas fa-lock-open"></i> Ecosystem Access</li>
+<li><i class="fas fa-vote-yea"></i> Future Governance (DAO)</li>
+</ul>
+</section>
 
-
-
-  <section id="utility">
-    <h2>Token Utility: The HUD Advantage</h2>
-    <p>The HUD token is designed as a utility-first asset, fueling multiple functions both within the HUDIYA Ecosystem and across broader digital commerce.</p>
-    <ul class="utility-list">
-        <li><i class="fas fa-exchange-alt"></i> Medium of Exchange: Seamlessly facilitates transactions, payments, and transfers globally.</li>
-        <li><i class="fas fa-dollar-sign"></i> Staking & Rewards: Allows holders to earn passive rewards, strengthening network stability and long-term commitment.</li>
-        <li><i class="fas fa-lock-open"></i> Ecosystem Access: Unlocks dApps, tools, and premium features within the growing HUDIYA ecosystem.</li>
-        <li><i class="fas fa-vote-yea"></i> Future Governance: Enables decentralized decision-making through token-holder voting rights (DAO implementation).</li>
-    </ul>
-  </section>
-
-
-
+<!-- ECOSYSTEM -->
 <section id="ecosystem">
-    <h2>The HUDIYA Ecosystem</h2>
-    <p>HUD is the core token connecting an innovative layer of products and services, ensuring real-world use and value beyond speculation. The ecosystem is the foundation for DeFi utilities, digital commerce, and dApp development.</p>
-    
-    <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start;">
-        
-        <ul class="ecosystem-list" style="flex: 1 1 300px;">
-            <li><i class="fas fa-wallet"></i> HUDIYA Wallet: A secure, user-friendly gateway to managing HUD and accessing all DeFi utilities.</li>
-            <li><i class="fas fa-credit-card"></i> HUDIYA Pay: A decentralized payment gateway for merchants and individuals, powered by HUD transactions.</li>
-            <li><i class="fas fa-certificate"></i> Staking Platform: A dedicated rewards system promoting token stability and community participation.</li>
-            <li><i class="fas fa-rocket"></i> HUDIYA Launchpad: A platform supporting and incubating new blockchain projects and startups using HUD.</li>
-        </ul>
-
-        <div style="flex: 1 1 300px; text-align: center; padding: 20px; background: rgba(255, 255, 255, 0.5); border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
-            <h3>HUDIYA Pay in Action</h3>
-            <img 
-                src="assets/Trust.png" 
-                alt="Mockup of a HUDIYA Pay instant digital transaction interface" 
-                style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);"
-            >
-            <small style="color: #555; display: block; margin-top: 10px;">Visualization of our secure, instant payment gateway.</small>
-        </div>
-    </div>
+<h2>The HUDIYA Ecosystem</h2>
+<div style="display:flex; flex-wrap:wrap; gap:30px;">
+<ul class="ecosystem-list" style="flex:1 1 300px;">
+<li><i class="fas fa-wallet"></i> HUDIYA Wallet</li>
+<li><i class="fas fa-credit-card"></i> HUDIYA Pay</li>
+<li><i class="fas fa-certificate"></i> Staking Platform</li>
+<li><i class="fas fa-rocket"></i> HUDIYA Launchpad</li>
+</ul>
+<div style="flex:1 1 300px; text-align:center; padding:20px; background: rgba(255,255,255,0.5); border-radius:20px;">
+<h3>HUDIYA Pay in Action</h3>
+<img src="assets/Trust.png" alt="HUDIYA Pay" style="max-width:100%; border-radius:15px;">
+</div>
+</div>
 </section>
 
-
-
-<section id="tokenomics" class="tokenomics-section">
-  <h2>Tokenomics & Fixed Scarcity</h2>
-  <p>
-    HUD is a scarce asset with a fixed total supply of <strong>61,000,000 HUD tokens</strong>, ensuring predictability
-    and long-term value against inflationary models. The distribution is structured for fairness and ecosystem stability.
-  </p>
-
-  <div class="table-container">
-        <table class="tokenomics-table">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Amount (HUD)</th>
-          <th>Percentage</th>
-          <th>Purpose</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Category">🔓 Liquidity</td>
-          <td data-label="Amount (HUD)">19,825,000</td>
-          <td data-label="Percentage">32.5%</td>
-          <td data-label="Purpose">Initial live trading liquidity and market stability</td>
-        </tr>
-        <tr>
-          <td data-label="Category">👤 Founder</td>
-          <td data-label="Amount (HUD)">6,100,000</td>
-          <td data-label="Percentage">10%</td>
-          <td data-label="Purpose">Long-term commitment, vesting applied</td>
-        </tr>
-        <tr>
-          <td data-label="Category">📣 Marketing / Airdrops</td>
-          <td data-label="Amount (HUD)">3,050,000</td>
-          <td data-label="Percentage">5%</td>
-          <td data-label="Purpose">Awareness, community rewards, partnerships</td>
-        </tr>
-        <tr>
-          <td data-label="Category">🏦 Team & Management</td>
-          <td data-label="Amount (HUD)">4,575,000</td>
-          <td data-label="Percentage">7.5%</td>
-          <td data-label="Purpose">Recruitment, retention, salaries, and bonuses</td>
-        </tr>
-        <tr>
-          <td data-label="Category">📈 CEX Listings</td>
-          <td data-label="Amount (HUD)">27,450,000</td>
-          <td data-label="Percentage">45%</td>
-          <td data-label="Purpose">Reserved for major exchange listings and liquidity</td>
-        </tr>
-        <tr>
-          <th data-label="Category">Total</th>
-          <th data-label="Amount (HUD)">61,000,000</th>
-          <th data-label="Percentage">100%</th>
-          <th data-label="Purpose">—</th>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<!-- TOKENOMICS -->
+<section id="tokenomics">
+<h2>Tokenomics & Fixed Scarcity</h2>
+<p>HUD is a scarce asset with a fixed total supply of <b>61,000,000 HUD tokens</b>.</p>
+<div class="table-container">
+<table class="tokenomics-table">
+<thead>
+<tr><th>Category</th><th>Amount</th><th>Percentage</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td data-label="Category">🔓 Liquidity</td><td data-label="Amount">19,825,000</td><td data-label="Percentage">32.5%</td><td data-label="Purpose">Initial live trading liquidity</td></tr>
+<tr><td data-label="Category">👤 Founder</td><td data-label="Amount">6,100,000</td><td data-label="Percentage">10%</td><td data-label="Purpose">Personal ownership</td></tr>
+<tr><td data-label="Category">📣 Marketing/Airdrops</td><td data-label="Amount">3,050,000</td><td data-label="Percentage">5%</td><td data-label="Purpose">Community building & awareness</td></tr>
+<tr><td data-label="Category">🏦 Team & Management</td><td data-label="Amount">4,575,000</td><td data-label="Percentage">7.5%</td><td data-label="Purpose">Salaries & bonuses</td></tr>
+<tr class="total-row"><td>Total</td><td>61,000,000</td><td>100%</td><td>Fixed Supply</td></tr>
+</tbody>
+</table>
+</div>
 </section>
 
+<!-- ROADMAP -->
+<section id="roadmap">
+<h2>Roadmap</h2>
+<h3>Phase 1: Foundation & Community (2025)</h3>
+<ul>
+<li>Smart contract deployment & verification</li>
+<li>Whitepaper release & liquidity</li>
+<li>Community formation</li>
+</ul>
+<h3>Phase 2: Utility & Growth (2026)</h3>
+<ul>
+<li>Listing on CoinGecko & CoinMarketCap</li>
+<li>Staking & rewards launch</li>
+<li>HUDIYA Pay & Wallet MVP</li>
+</ul>
+<h3>Phase 3: Expansion & Governance (2027+)</h3>
+<ul>
+<li>Full DAO governance</li>
+<li>Major exchange listings</li>
+<li>Launchpad rollout & ecosystem expansion</li>
+</ul>
+</section>
 
-  <section id="roadmap">
-    <h2>Roadmap</h2>
-    <div class="roadmap-phase">
-            <h3>Phase 1: Foundation & Community (<span id="current-year">2025</span>)</h3> 
-      <ul>
-        <li>Smart contract deployment & verification</li>
-        <li>Whitepaper release & initial liquidity provision</li>
-        <li>Community formation and social channel launch</li>
-        <li>Strategic partnerships for ecosystem planning</li>
-      </ul>
-    </div>
-    <div class="roadmap-phase">
-      <h3>Phase 2: Utility & Growth (2026)</h3>
-      <ul>
-        <li>Listing on CoinGecko and CoinMarketCap</li>
-        <li>Launch of Staking and Reward systems</li>
-        <li>First ecosystem integrations: HUDIYA Pay, Staking Platform, and HUDIYA Wallet MVP</li>
-        <li>Tier 2/3 exchange listings</li>
-      </ul>
-    </div>
-    <div class="roadmap-phase">
-      <h3>Phase 3: Expansion & Governance (2027+)</h3>
-      <ul>
-        <li>Full Decentralized Autonomous Organization (DAO) governance implementation</li>
-        <li>Major Tier 1 exchange listings (e.g., Binance)</li>
-        <li>Ecosystem Expansion: HUDIYA Launchpad rollout, NFT & dApp integrations, and cross-chain bridges.</li>
-        <li>Expand real-world use cases and support community-led innovation.</li>
-      </ul>
-    </div>
-  </section>
+<!-- COMMUNITY -->
+<section id="community">
+<h2>Community & Contact</h2>
+<div class="social-links">
+<a href="https://x.com/hudiya_crypto" target="_blank"><i class="fa-brands fa-x"></i></a>
+<a href="mailto:info@hudiyafinance.site"><i class="fas fa-envelope"></i></a>
+</div>
+</section>
 
-
-  <section id="team">
-    <h2>Team & Expansion</h2>
-    <div class="team-card">
-      <div class="team-info">
-        <p><strong>Prince Jonathan</strong> — Founder & Lead Visionary. HUDIYA began as an independent project and will progressively onboard blockchain developers, marketing strategists, and ecosystem partners to enhance scalability and adoption as the community grows.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="risks">
-    <h2>Risks</h2>
-    <ul>
-        <li>Market Volatility: Prices may fluctuate significantly due to global crypto sentiment and economic trends.</li>
-        <li>Regulatory Changes: Future laws may impact project operations.</li>
-        <li>Adoption Dependency: Ecosystem success relies on active participation and partnership growth.</li>
-        <li>Technological Risks: Smart contract issues or integrations may occur; audits will be prioritized to ensure safety.</li>
-    </ul>
-  </section>
-
-  <section id="community">
-    <h2>Community & Contact</h2>
-    <div class="social-links">
-      <a href="https://x.com/hudiya_crypto" target="_blank"><i class="fa-brands fa-x"></i> @hudiya_crypto</a>
-      <a href="mailto:info@hudiyafinance.site"><i class="fas fa-envelope"></i> info@hudiyafinance.site</a>
-    </div>
-  </section>
-
+<!-- FOOTER -->
 <footer>
-  <p>&copy; <span id="footer-year">2025</span> HUDIYA (HUD). All rights reserved.</p>
+<p>&copy; <span id="footer-year">2025</span> HUDIYA (HUD). All rights reserved.</p>
 </footer>
 
 <script>
-    // 1. Automatic Year Update (Roadmap and Footer)
-    const currentYear = new Date().getFullYear();
-    
-    const roadmapYearSpan = document.getElementById('current-year');
-    if (roadmapYearSpan) {
-        roadmapYearSpan.textContent = currentYear;
-    }
+// Automatic year update
+document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-    const footerYearSpan = document.getElementById('footer-year');
-    if (footerYearSpan) {
-        footerYearSpan.textContent = currentYear;
-    }
+// Hamburger menu
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+navToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
 
-    // 2. Happy New Year Message
-    function checkNewYear() {
-        const today = new Date();
-        const month = today.getMonth(); // 0 is January, 11 is December
-        const day = today.getDate(); // 1 to 31
-
-        const body = document.body;
-        const messageId = 'new-year-banner';
-        
-        // Check if it's January 1st to January 10th
-        if (month === 0 && day >= 1 && day <= 10) {
-            // Check if the banner already exists
-            if (!document.getElementById(messageId)) {
-                
-                const banner = document.createElement('div');
-                banner.id = messageId;
-                banner.textContent = "🥳 Happy New Year! We're excited for an amazing year of growth! 🚀";
-                
-                // --- Add Styles to the Banner ---
-                banner.style.cssText = `
-                    background: linear-gradient(90deg, #ff69b4, #5cf1ff);
-                    color: white;
-                    text-align: center;
-                    padding: 15px 10px;
-                    font-size: 1.1em;
-                    font-weight: 700;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    z-index: 10000;
-                    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-                `;
-
-                body.prepend(banner); // Add the banner at the very top of the page
-            }
-        } else {
-            // Remove the banner if it's not the New Year period
-            const banner = document.getElementById(messageId);
-            if (banner) {
-                banner.remove();
-            }
-        }
-    }
-
-    // Run the function when the page loads
-    checkNewYear();
-    
-    // Check again every hour
-    setInterval(checkNewYear, 3600000); 
-
-    // 3. Smart Navigation Hide/Show on Scroll (for better mobile experience)
-    let lastScrollTop = 0;
-    const navbar = document.querySelector('nav');
-    
-    window.addEventListener('scroll', function() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Hide nav bar when scrolling down, show when scrolling up
-        if (scrollTop > lastScrollTop && scrollTop > 50) {
-            // Scrolling down (and past the initial 50px buffer)
-            navbar.classList.add('hidden');
-        } else {
-            // Scrolling up or at the very top of the page
-            navbar.classList.remove('hidden');
-        }
-        
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile/iOS bounce effect
-    }, false);
+// Sticky navbar hide on scroll down
+let lastScroll = 0;
+const stickyNav = document.getElementById('sticky-nav-wrapper');
+window.addEventListener('scroll', () => {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if(currentScroll > lastScroll && currentScroll > 100){ stickyNav.classList.add('hidden'); } 
+    else { stickyNav.classList.remove('hidden'); }
+    lastScroll = currentScroll;
+});
 </script>
+
 </body>
 </html>
