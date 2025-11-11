@@ -15,8 +15,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="hudiyafinance.site" />
   <link rel="manifest" href="/site.webmanifest" />
-
-   <style>
+<style>
 /* --- GLOBAL STYLES (iOS/Bubble Theme) --- */
 body {
   font-family: 'Poppins', sans-serif;
@@ -25,6 +24,7 @@ body {
   color: #1a1a1a;
   background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 50%, #f3e5f5 100%);
   scroll-behavior: smooth;
+  padding-top: 70px; /* Essential for fixed nav bar clearance */
 }
 
 /* Links */
@@ -42,10 +42,12 @@ h2 {
   font-weight: 700;
 }
 
-/* --- NAVIGATION (Glassmorphism Floating Bar) --- */
+/* --- NAVIGATION (Glassmorphism Floating Bar - Fixed and Hidden on Scroll) --- */
 nav {
-  position: sticky;
+  position: fixed;
   top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -61,6 +63,10 @@ nav {
   padding: 10px 30px;
   transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
+nav.hidden {
+  top: -100px; /* Moves off-screen when hidden */
+  opacity: 0;
+}
 nav a {
   margin: 5px 15px;
   color: #1a1a1a;
@@ -69,7 +75,7 @@ nav a {
 }
 nav a:hover { color: #ff69b4; }
 
-/* --- HERO SECTION (HUDIYA Wallet Transfer Showcase) --- */
+/* --- HERO SECTION --- */
 .hero {
   display: flex;
   align-items: center;
@@ -280,7 +286,7 @@ footer a { color: #ff69b4; font-weight: 600; }
 
 /* Responsive */
 @media (max-width: 768px) {
-  nav { max-width: 95%; margin: 10px auto; padding: 10px 15px; border-radius: 15px; }
+  nav { max-width: 95%; margin: 0 auto; padding: 10px 15px; border-radius: 15px; }
   nav a { margin: 5px 8px; font-size: 0.9em; }
   section { padding: 30px 20px; border-radius: 20px; }
   .utility-list, .ecosystem-list { grid-template-columns: 1fr; }
@@ -334,8 +340,7 @@ footer a { color: #ff69b4; font-weight: 600; }
         content: attr(data-label); /* Use the data-label attribute */
         font-weight: 700;
         color: #d6338a;
-        /* Optimized width for 320px screens */
-        width: 100px; 
+        width: 100px; /* Base width for mobile labels */
         display: inline-block;
         margin-right: 10px;
     }
@@ -356,7 +361,20 @@ footer a { color: #ff69b4; font-weight: 600; }
         color: white;
     }
 }
-/* --- END OPTIMIZED RESPONSIVE TABLE CSS --- */
+
+/* --- FIX FOR 320PX MOBILE SCREENS (Tokenomics Label Width) --- */
+@media (max-width: 380px) {
+    /* Reduce the width of the data-label on very narrow screens to prevent wrap/overflow */
+    .tokenomics-table td::before {
+        width: 80px; /* Reduced from 100px to give content more space */
+    }
+    
+    /* Ensure the Total row labels are also reduced */
+    .tokenomics-table tr:last-child td::before {
+        width: 80px; 
+    }
+}
+/* --- END FIX --- */
 </style>
 
 </head>
@@ -558,74 +576,92 @@ footer a { color: #ff69b4; font-weight: 600; }
   </section>
 
 <footer>
-  <p>&copy; <span id="footer-year">2025</span> HUDIYA (HUD). All rights reserved.</p>
+  <p>&copy; <span id="footer-year">2025</span> HUDIYA (HUD). All rights reserved.</p>
 </footer>
 
 <script>
-    // 1. Automatic Year Update (Roadmap and Footer)
-    const currentYear = new Date().getFullYear();
+    // 1. Automatic Year Update (Roadmap and Footer)
+    const currentYear = new Date().getFullYear();
+    
+    const roadmapYearSpan = document.getElementById('current-year');
+    if (roadmapYearSpan) {
+        roadmapYearSpan.textContent = currentYear;
+    }
+
+    const footerYearSpan = document.getElementById('footer-year');
+    if (footerYearSpan) {
+        footerYearSpan.textContent = currentYear;
+    }
+
+    // 2. Happy New Year Message
+    function checkNewYear() {
+        const today = new Date();
+        const month = today.getMonth(); // 0 is January, 11 is December
+        const day = today.getDate(); // 1 to 31
+
+        const body = document.body;
+        const messageId = 'new-year-banner';
+        
+        // Check if it's January 1st to January 10th
+        if (month === 0 && day >= 1 && day <= 10) {
+            // Check if the banner already exists
+            if (!document.getElementById(messageId)) {
+                
+                const banner = document.createElement('div');
+                banner.id = messageId;
+                banner.textContent = "🥳 Happy New Year! We're excited for an amazing year of growth! 🚀";
+                
+                // --- Add Styles to the Banner ---
+                banner.style.cssText = `
+                    background: linear-gradient(90deg, #ff69b4, #5cf1ff);
+                    color: white;
+                    text-align: center;
+                    padding: 15px 10px;
+                    font-size: 1.1em;
+                    font-weight: 700;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    z-index: 10000;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                `;
+
+                body.prepend(banner); // Add the banner at the very top of the page
+            }
+        } else {
+            // Remove the banner if it's not the New Year period
+            const banner = document.getElementById(messageId);
+            if (banner) {
+                banner.remove();
+            }
+        }
+    }
+
+    // Run the function when the page loads
+    checkNewYear();
+    
+    // Check again every hour
+    setInterval(checkNewYear, 3600000); 
+
+    // 3. Smart Navigation Hide/Show on Scroll (for better mobile experience)
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('nav');
     
-    const roadmapYearSpan = document.getElementById('current-year');
-    if (roadmapYearSpan) {
-        roadmapYearSpan.textContent = currentYear;
-    }
-
-    const footerYearSpan = document.getElementById('footer-year');
-    if (footerYearSpan) {
-        footerYearSpan.textContent = currentYear;
-    }
-
-    // 2. Happy New Year Message
-    function checkNewYear() {
-        const today = new Date();
-        const month = today.getMonth(); // 0 is January, 11 is December
-        const day = today.getDate(); // 1 to 31
-
-        const body = document.body;
-        const messageId = 'new-year-banner';
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        // Check if it's January 1st to January 10th
-        if (month === 0 && day >= 1 && day <= 10) {
-            // Check if the banner already exists
-            if (!document.getElementById(messageId)) {
-                
-                const banner = document.createElement('div');
-                banner.id = messageId;
-                banner.textContent = "🥳 Happy New Year! We're excited for an amazing year of growth! 🚀";
-                
-                // --- Add Styles to the Banner ---
-                banner.style.cssText = `
-                    background: linear-gradient(90deg, #ff69b4, #5cf1ff);
-                    color: white;
-                    text-align: center;
-                    padding: 15px 10px;
-                    font-size: 1.1em;
-                    font-weight: 700;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    z-index: 10000;
-                    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-                `;
-
-                body.prepend(banner); // Add the banner at the very top of the page
-            }
+        // Hide nav bar when scrolling down, show when scrolling up
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+            // Scrolling down (and past the initial 50px buffer)
+            navbar.classList.add('hidden');
         } else {
-            // Remove the banner if it's not the New Year period
-            const banner = document.getElementById(messageId);
-            if (banner) {
-                banner.remove();
-            }
+            // Scrolling up or at the very top of the page
+            navbar.classList.remove('hidden');
         }
-    }
-
-    // Run the function when the page loads
-    checkNewYear();
-    
-    // Check again every hour
-    setInterval(checkNewYear, 3600000); 
-
+        
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile/iOS bounce effect
+    }, false);
 </script>
 </body>
 </html>
