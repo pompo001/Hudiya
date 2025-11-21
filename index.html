@@ -5,10 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HUDIYA (HUD) CRYPTO </title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -37,19 +35,10 @@ body {
     scroll-behavior: smooth;
     padding-top: 20px;
 }
-a { 
-    text-decoration: none; 
-    color: var(--color-pink-secondary);
-    transition: 0.3s; 
-    font-weight: 600; 
-}
+a { text-decoration: none; color: var(--color-pink-secondary); transition: 0.3s; font-weight: 600; }
 a:hover { color: var(--color-pink-primary); }
 h1, h2, h3 { font-weight: 700; }
-h2 { 
-    color: var(--color-pink-secondary);
-    margin-bottom: 25px;
-    font-size: 2em;
-}
+h2 { color: var(--color-pink-secondary); margin-bottom: 25px; font-size: 2em; }
 h3 { margin-top: 20px; color: var(--color-pink-secondary); }
 p { margin-bottom: 15px; }
 
@@ -117,29 +106,50 @@ header {
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 #logo {
-    width: 130px; height: 130px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--color-white), #f0f0f0);
     margin: 15px auto;
     display: flex;
-    justify-content: center; align-items: center;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-#logo img { width: 100%; height: 100%; object-fit: contain; padding: 15%; }
+#logo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+#logo:hover img { transform: scale(1.05); }
 
 /* --- SECTIONS --- */
 section {
     max-width: 900px;
     margin: 50px auto;
     padding: 50px 30px;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(15px);
     border-radius: 30px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.05);
     border: 1px solid rgba(255,255,255,0.9);
 }
-.utility-list, .ecosystem-list { list-style: none; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-.utility-list li, .ecosystem-list li { background: var(--color-light-pink); padding:18px; border-radius:15px; font-weight:600; box-shadow:0 2px 8px rgba(0,0,0,0.05); display:flex; align-items:center; }
+
+/* --- LISTS --- */
+.utility-list, .ecosystem-list {
+    list-style: none;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+.utility-list li, .ecosystem-list li {
+    background: var(--color-light-pink);
+    padding:18px;
+    border-radius:15px;
+    font-weight:600;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05);
+    display:flex;
+    align-items:center;
+}
 .utility-list li i, .ecosystem-list li i { color: var(--color-pink-secondary); margin-right:15px; font-size:1.4em; }
 
 /* --- TOKENOMICS TABLE --- */
@@ -150,17 +160,79 @@ td { border:none; border-bottom:1px solid #f0f0f0; padding:12px 8px; text-align:
 .tokenomics-table tr.total-row { background: linear-gradient(90deg, var(--color-pink-primary), var(--color-pink-secondary)); font-weight:700; color:var(--color-white); }
 .tokenomics-table tr.total-row td { border-bottom:none; color:inherit; }
 
+/* --- TEAM SECTION --- */
+.team-member-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 30px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-items: center;
+}
+.team-member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+}
+.member-image-container {
+    flex: 0 0 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.member-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.member-image-container img:hover { transform: scale(1.1); }
+.member-info { flex: 1; }
+.member-info h3 { margin: 0 0 5px 0; }
+.member-info .role { display: block; color: var(--color-pink-secondary); font-weight: 600; margin-bottom: 10px; }
+
+/* --- ECOSYSTEM IMAGE --- */
+#ecosystem img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#ecosystem img:hover { transform: scale(1.02); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+
 /* --- FOOTER --- */
-footer { background: rgba(255,255,255,0.7); backdrop-filter:blur(10px); color:#555; text-align:center; padding:25px 15px; font-size:0.9em; border-top:1px solid rgba(255,255,255,0.5); margin-top:50px; }
+footer {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);
+    color:#555;
+    text-align:center;
+    padding:25px 15px;
+    font-size:0.9em;
+    border-top:1px solid rgba(255,255,255,0.5);
+    margin-top:50px;
+}
 .social-links { margin: 15px 0; display:flex; justify-content:center; gap:15px; }
 .social-links a { color: var(--color-dark); font-size:1.6em; display:inline-flex; justify-content:center; align-items:center; width:40px; height:40px; border-radius:50%; background-color:#ffc7d5; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
 .social-links a:hover { background-color: var(--color-pink-primary); color: var(--color-white); }
 
-/* Download button */
-.download-btn { display:inline-block; padding:10px 20px; background:linear-gradient(45deg,var(--color-pink-primary),var(--color-pink-secondary)); color:var(--color-white)!important; border-radius:25px; font-weight:700; margin-top:15px; }
+/* --- DOWNLOAD BUTTON --- */
+.download-btn {
+    display:inline-block;
+    padding:10px 20px;
+    background:linear-gradient(45deg,var(--color-pink-primary),var(--color-pink-secondary));
+    color:var(--color-white)!important;
+    border-radius:25px;
+    font-weight:700;
+    margin-top:15px;
+}
 .download-btn:hover { background:linear-gradient(45deg,var(--color-pink-secondary),var(--color-pink-primary)); }
 
-/* --- MOBILE --- */
+/* --- MOBILE RESPONSIVE --- */
 @media(max-width:768px){
     body { padding-top:70px; }
     #nav-toggle { display:block; position:fixed; top:15px; right:15px; left:auto; transform:none; }
@@ -169,41 +241,51 @@ footer { background: rgba(255,255,255,0.7); backdrop-filter:blur(10px); color:#5
     nav.active { display:flex; }
     nav a { margin:5px 0; width:100%; justify-content:flex-start; padding:12px 15px; background:#fff8f9; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,0.05);}
     nav a:hover { background: var(--color-pink-primary); color:white;}
+    
+    /* TEAM FIX ON SMALL DEVICES */
+    .team-member-card {
+        flex-direction: row; /* image left */
+        text-align: left;
+        align-items: center;
+    }
+    .member-image-container { flex: 0 0 80px; height: 80px; }
+    .member-info { margin-left: 12px; margin-top: 0; }
+    
+    /* TOKENOMICS MOBILE TABLE */
     .tokenomics-table thead, .tokenomics-table th { display:none; }
     .tokenomics-table, .tokenomics-table tbody, .tokenomics-table tr { display:block; width:100%; }
-    .tokenomics-table tr td { display:flex; justify-content:space-between; text-align:right; padding:10px 15px; border-bottom:1px dashed #eee; }
+    .tokenomics-table tr td { display:flex; justify-content:space-between; text-align:right; padding:10px 15px; border-bottom:1px dashed var(--color-pink-secondary); }
     .tokenomics-table td::before { content: attr(data-label); font-weight:700; color:var(--color-pink-secondary); flex-grow:1; text-align:left; margin-right:10px; }
-    .tokenomics-table tr.total-row td { display:flex; justify-content:space-between; text-align:right; color:white; padding:10px 15px; border-bottom:none; }
+    .tokenomics-table tr.total-row td { display:flex; justify-content:space-between; text-align:right; color:var(--color-pink-secondary); padding:10px 15px; border-bottom:none; }
     .tokenomics-table tr.total-row td::before { content: none; }
 }
-</style>
+
+
+    </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <div class="mobile-nav-wrapper" id="sticky-nav-wrapper">
-    <button id="nav-toggle"><i class="fas fa-bars"></i></button>
-    <nav id="nav-links">
-        <a href="#about"><i class="fas fa-info-circle"></i> About</a>
-        <a href="#utility"><i class="fas fa-cogs"></i> Utility</a>
-        <a href="#ecosystem"><i class="fas fa-globe"></i> Ecosystem</a>
-        <a href="#tokenomics"><i class="fas fa-chart-pie"></i> Tokenomics</a>
-        <a href="#roadmap"><i class="fas fa-map-marked-alt"></i> Roadmap</a>
-        <a href="#community"><i class="fas fa-users"></i> Community</a>
-        <a href="whitepaper/HUD WP.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Whitepaper</a>
-    </nav>
+    <button id="nav-toggle"><i class="fas fa-bars"></i></button>
+    <nav id="nav-links">
+        <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+        <a href="#utility"><i class="fas fa-cogs"></i> Utility</a>
+        <a href="#ecosystem"><i class="fas fa-globe"></i> Ecosystem</a>
+        <a href="#tokenomics"><i class="fas fa-chart-pie"></i> Tokenomics</a>
+        <a href="#team"><i class="fas fa-handshake"></i> Team</a>         <a href="#roadmap"><i class="fas fa-map-marked-alt"></i> Roadmap</a>
+        <a href="#community"><i class="fas fa-users"></i> Community</a>
+        <a href="whitepaper/Hudiya-whitepaper.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Whitepaper</a>
+    </nav>
 </div>
 
-<!-- HEADER -->
 <header>
-    <div id="logo"><img src="assets/favicon.svg" alt="HUDIYA Logo"></div>
-    <h1>HUDIYA (HUD)</h1>
-    <p>The Future of Everyday Digital Transactions</p>
-    <p class="intro-abstract">HUDIYA is a decentralized utility token engineered to solve the market's need for a truly <b>scarce</b> and <b>utility-driven</b> digital currency.</p>
+    <div id="logo"><img src="assets/favicon.svg" alt="HUDIYA Logo"></div>
+    <h1>HUDIYA (HUD)</h1>
+    <p>The Future of Everyday Digital Transactions</p>
+    <p class="intro-abstract">HUDIYA is a decentralized utility token engineered to solve the market's need for a truly <b>scarce</b> and <b>utility-driven</b> digital currency.</p>
 </header>
 
-<!-- ABOUT -->
 <section id="about">
 <h2>About HUDIYA</h2>
 <p>HUDIYA (HUD) is a utility token on BNB Smart Chain focused on becoming a globally trusted medium for digital payments.</p>
@@ -211,11 +293,17 @@ footer { background: rgba(255,255,255,0.7); backdrop-filter:blur(10px); color:#5
 <li><b>Vision:</b> Establish HUDIYA as a globally recognized decentralized utility token.</li>
 <li><b>Mission:</b> Deliver a scarce, secure, transparent currency and ecosystem.</li>
 </ul>
-<p><b>Contract Address:</b> <code>0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e</code></p>
-<p><a href="whitepaper/HUD WP.pdf" target="_blank" class="download-btn"><i class="fas fa-file-pdf"></i> Download Whitepaper</a></p>
+<p>
+    <b>Contract Address:</b> <code>0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e</code>
+</p>
+<p>
+    <a href=https://apespace.io/bsc/0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e target="_blank">
+        <i class="fas fa-external-link-alt"></i> View HUD on ApeSpace
+    </a>
+</p>
+<p><a href="whitepaper/Hudiya-whitepaper.pdf" target="_blank" class="download-btn"><i class="fas fa-file-pdf"></i> Download Whitepaper</a></p>
 </section>
 
-<!-- UTILITY -->
 <section id="utility">
 <h2>Token Utility: The HUD Advantage</h2>
 <ul class="utility-list">
@@ -226,7 +314,6 @@ footer { background: rgba(255,255,255,0.7); backdrop-filter:blur(10px); color:#5
 </ul>
 </section>
 
-<!-- ECOSYSTEM -->
 <section id="ecosystem">
 <h2>The HUDIYA Ecosystem</h2>
 <div style="display:flex; flex-wrap:wrap; gap:30px;">
@@ -243,27 +330,82 @@ footer { background: rgba(255,255,255,0.7); backdrop-filter:blur(10px); color:#5
 </div>
 </section>
 
-<!-- TOKENOMICS -->
-<section id="tokenomics">
-<h2>Tokenomics & Fixed Scarcity</h2>
-<p>HUD is a scarce asset with a fixed total supply of <b>61,000,000 HUD tokens</b>.</p>
-<div class="table-container">
-<table class="tokenomics-table">
-<thead>
-<tr><th>Category</th><th>Amount</th><th>Percentage</th><th>Purpose</th></tr>
-</thead>
-<tbody>
-<tr><td data-label="Category">🔓 Liquidity</td><td data-label="Amount">19,825,000</td><td data-label="Percentage">32.5%</td><td data-label="Purpose">Initial live trading liquidity</td></tr>
-<tr><td data-label="Category">👤 Founder</td><td data-label="Amount">6,100,000</td><td data-label="Percentage">10%</td><td data-label="Purpose">Personal ownership</td></tr>
-<tr><td data-label="Category">📣 Marketing/Airdrops</td><td data-label="Amount">3,050,000</td><td data-label="Percentage">5%</td><td data-label="Purpose">Community building & awareness</td></tr>
-<tr><td data-label="Category">🏦 Team & Management</td><td data-label="Amount">4,575,000</td><td data-label="Percentage">7.5%</td><td data-label="Purpose">Salaries & bonuses</td></tr>
-<tr class="total-row"><td>Total</td><td>61,000,000</td><td>100%</td><td>Fixed Supply</td></tr>
-</tbody>
-</table>
+<section id="team">
+<h2>Meet The Team</h2>
+
+<div class="team-member-card">
+    <div class="member-image-container">
+      <img src="assets/prince.jpg" alt="Image of Prince Jonathan">
+    </div>
+    <div class="member-info">
+        <h3>Prince Jonathan</h3>
+        <span class="role">Creator </span>
+        <p>Visionary behind HUDIYA, leading the project's strategy, development, and long-term ecosystem growth. Committed to delivering a truly scarce and utility-driven digital asset.</p>
+    </div>
 </div>
+
+<div class="team-member-card team-expansion">
+    <i class="fas fa-user-plus" style="margin-right: 10px;"></i> 
+    We are actively expanding our team! Interested in joining the HUDIYA vision?
+</div>
+
+</section><section id="tokenomics" class="tokenomics-section">
+    <img src="assets/token-chart.png" class="tokenomics-image" alt="HUD Token Chart">
+    <div class="tokenomics-info">
+        <h2>Tokenomics & Fixed Scarcity</h2>
+        <p>HUD is a scarce asset with a fixed total supply of <b>61,000,000 HUD tokens</b>.</p>
+        <table class="tokenomics-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Percentage</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Category">🔓 Liquidity</td>
+                    <td data-label="Amount">19,825,000</td>
+                    <td data-label="Percentage">32.5%</td>
+                    <td data-label="Purpose">Initial live trading liquidity</td>
+                </tr>
+                <tr>
+                    <td data-label="Category">👤 Founder</td>
+                    <td data-label="Amount">6,100,000</td>
+                    <td data-label="Percentage">10%</td>
+                    <td data-label="Purpose">Personal ownership</td>
+                </tr>
+                <tr>
+                    <td data-label="Category">👤 CEX Listings</td>
+                    <td data-label="Amount">27,450,000</td>
+                    <td data-label="Percentage">45%</td>
+                    <td data-label="Purpose">Liquidity & exchange listing</td>
+                </tr>
+                <tr>
+                    <td data-label="Category">📣 Marketing/Airdrops</td>
+                    <td data-label="Amount">3,050,000</td>
+                    <td data-label="Percentage">5%</td>
+                    <td data-label="Purpose">Community building & awareness</td>
+                </tr>
+                <tr>
+                    <td data-label="Category">🏦 Team & Management</td>
+                    <td data-label="Amount">4,575,000</td>
+                    <td data-label="Percentage">7.5%</td>
+                    <td data-label="Purpose">Salaries & bonuses</td>
+                </tr>
+                <tr class="total-row">
+                    <td>Total</td>
+                    <td>61,000,000</td>
+                    <td>100%</td>
+                    <td>Fixed Supply</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </section>
 
-<!-- ROADMAP -->
+
 <section id="roadmap">
 <h2>Roadmap</h2>
 <h3>Phase 1: Foundation & Community (2025)</h3>
@@ -286,16 +428,14 @@ footer { background: rgba(255,255,255,0.7); backdrop-filter:blur(10px); color:#5
 </ul>
 </section>
 
-<!-- COMMUNITY -->
 <section id="community">
 <h2>Community & Contact</h2>
 <div class="social-links">
-<a href="https://x.com/hudiya_crypto" target="_blank"><i class="fa-brands fa-x"></i></a>
+<a href="https://x.com/HUDIYA_HUD_CRPT" target="_blank"><i class="fa-brands fa-x"></i></a>
 <a href="mailto:info@hudiyafinance.site"><i class="fas fa-envelope"></i></a>
 </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
 <p>&copy; <span id="footer-year">2025</span> HUDIYA (HUD). All rights reserved.</p>
 </footer>
@@ -313,10 +453,10 @@ navToggle.addEventListener('click', () => { navLinks.classList.toggle('active');
 let lastScroll = 0;
 const stickyNav = document.getElementById('sticky-nav-wrapper');
 window.addEventListener('scroll', () => {
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    if(currentScroll > lastScroll && currentScroll > 100){ stickyNav.classList.add('hidden'); } 
-    else { stickyNav.classList.remove('hidden'); }
-    lastScroll = currentScroll;
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if(currentScroll > lastScroll && currentScroll > 100){ stickyNav.classList.add('hidden'); } 
+    else { stickyNav.classList.remove('hidden'); }
+    lastScroll = currentScroll;
 });
 </script>
 
