@@ -9,12 +9,12 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="hudiyafinance.site" />
-  <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="hudiyafinance.site" />
+    <link rel="manifest" href="/site.webmanifest" />
 
 <style>
 :root {
@@ -23,10 +23,17 @@
     --color-light-pink: #ffeef2;
     --color-white: #ffffff;
     --color-dark: #1c1c1e;
+    --color-success-green: #28a745; /* Added green color for verification */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
 }
 
 /* --- GLOBAL STYLES --- */
 body {
+    
     font-family: 'Poppins', sans-serif;
     margin: 0;
     line-height: 1.6;
@@ -34,6 +41,7 @@ body {
     background: linear-gradient(135deg, var(--color-light-pink) 0%, var(--color-white) 50%, #f0f0f5 100%);
     scroll-behavior: smooth;
     padding-top: 20px;
+    
 }
 a { text-decoration: none; color: var(--color-pink-secondary); transition: 0.3s; font-weight: 600; }
 a:hover { color: var(--color-pink-primary); }
@@ -156,8 +164,8 @@ section {
 table { width:100%; border-collapse: separate; border-spacing:0; overflow:hidden; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.05); }
 th { background: linear-gradient(90deg, var(--color-pink-primary), var(--color-pink-secondary)); color: var(--color-white); padding:15px 12px; text-align:center; font-weight:700; }
 tr:nth-child(even) td { background-color:#fff8f9; }
-td { border:none; border-bottom:1px solid #f0f0f0; padding:12px 8px; text-align:center; }
-.tokenomics-table tr.total-row { background: linear-gradient(90deg, var(--color-pink-primary), var(--color-pink-secondary)); font-weight:700; color:var(--color-white); }
+td { border:none; border-bottom:1px solid var(--color-pink-secondary); padding:12px 8px; text-align:center; }
+.tokenomics-table tr.total-row { background: linear-gradient(90deg, var(--color-pink-primary), var(--color-pink-secondary)); font-weight:700; color:var(--color-pink-secondary); }
 .tokenomics-table tr.total-row td { border-bottom:none; color:inherit; }
 
 /* --- TEAM SECTION --- */
@@ -194,6 +202,39 @@ td { border:none; border-bottom:1px solid #f0f0f0; padding:12px 8px; text-align:
 .member-info { flex: 1; }
 .member-info h3 { margin: 0 0 5px 0; }
 .member-info .role { display: block; color: var(--color-pink-secondary); font-weight: 600; margin-bottom: 10px; }
+
+/* Added custom style for the BscScan verification link */
+.bscscan-link-container {
+    margin-top: 15px; 
+    display: flex; 
+    flex-direction: column;
+    gap: 10px; 
+    align-items: flex-start;
+}
+.bscscan-link {
+    font-weight: 700; 
+    color: var(--color-success-green) !important;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    background-color: #e6f7e9;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+}
+.bscscan-link:hover {
+    background-color: #d4f0d8;
+}
+.bscscan-link i {
+    margin-right: 8px;
+    color: var(--color-success-green);
+}
+.ownership-status {
+    font-weight: 600;
+    color: var(--color-dark);
+    font-size: 0.9em;
+}
+
 
 /* --- ECOSYSTEM IMAGE --- */
 #ecosystem img {
@@ -258,49 +299,56 @@ footer {
     .tokenomics-table td::before { content: attr(data-label); font-weight:700; color:var(--color-pink-secondary); flex-grow:1; text-align:left; margin-right:10px; }
     .tokenomics-table tr.total-row td { display:flex; justify-content:space-between; text-align:right; color:var(--color-pink-secondary); padding:10px 15px; border-bottom:none; }
     .tokenomics-table tr.total-row td::before { content: none; }
+    
+    .bscscan-link-container { align-items: stretch; }
+    .bscscan-link { justify-content: center; }
 }
-
-
     </style>
 </head>
 
 <body>
 
 <div class="mobile-nav-wrapper" id="sticky-nav-wrapper">
-    <button id="nav-toggle"><i class="fas fa-bars"></i></button>
-    <nav id="nav-links">
-        <a href="#about"><i class="fas fa-info-circle"></i> About</a>
-        <a href="#utility"><i class="fas fa-cogs"></i> Utility</a>
-        <a href="#ecosystem"><i class="fas fa-globe"></i> Ecosystem</a>
-        <a href="#tokenomics"><i class="fas fa-chart-pie"></i> Tokenomics</a>
-        <a href="#team"><i class="fas fa-handshake"></i> Team</a>         <a href="#roadmap"><i class="fas fa-map-marked-alt"></i> Roadmap</a>
-        <a href="#community"><i class="fas fa-users"></i> Community</a>
-        <a href="whitepaper/Hudiya-whitepaper.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Whitepaper</a>
-    </nav>
+    <button id="nav-toggle"><i class="fas fa-bars"></i></button>
+    <nav id="nav-links">
+        <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+        <a href="#utility"><i class="fas fa-cogs"></i> Utility</a>
+        <a href="#ecosystem"><i class="fas fa-globe"></i> Ecosystem</a>
+        <a href="#tokenomics"><i class="fas fa-chart-pie"></i> Tokenomics</a>
+        <a href="#team"><i class="fas fa-handshake"></i> Team</a> 
+        <a href="#roadmap"><i class="fas fa-map-marked-alt"></i> Roadmap</a>
+        <a href="#community"><i class="fas fa-users"></i> Community</a>
+        <a href="whitepaper/Hudiya-whitepaper.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Whitepaper</a>
+    </nav>
 </div>
 
 <header>
-    <div id="logo"><img src="assets/favicon.svg" alt="HUDIYA Logo"></div>
-    <h1>HUDIYA (HUD)</h1>
-    <p>The Future of Everyday Digital Transactions</p>
-    <p class="intro-abstract">HUDIYA is a decentralized utility token engineered to solve the market's need for a truly <b>scarce</b> and <b>utility-driven</b> digital currency.</p>
+    <div id="logo"><img src="assets/favicon.svg" alt="HUDIYA Logo"></div>
+    <h1>HUDIYA (HUD)</h1>
+    <p>The Future of Everyday Digital Transactions</p>
+    <p class="intro-abstract">HUDIYA is a decentralized utility token engineered to solve the market's need for a truly scarce and utility-driven digital currency.</p>
 </header>
 
 <section id="about">
 <h2>About HUDIYA</h2>
 <p>HUDIYA (HUD) is a utility token on BNB Smart Chain focused on becoming a globally trusted medium for digital payments.</p>
 <ul>
-<li><b>Vision:</b> Establish HUDIYA as a globally recognized decentralized utility token.</li>
-<li><b>Mission:</b> Deliver a scarce, secure, transparent currency and ecosystem.</li>
+<li>Vision: Establish HUDIYA as a globally recognized decentralized utility token.</li>
+<li>Mission: Deliver a scarce, secure, transparent currency and ecosystem.</li>
 </ul>
+
 <p>
-    <b>Contract Address:</b> <code>0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e</code>
+    Contract Address: <code>0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e</code>
 </p>
-<p>
-    <a href=https://apespace.io/bsc/0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e target="_blank">
-        <i class="fas fa-external-link-alt"></i> View HUD on ApeSpace
-    </a>
-</p>
+
+<div class="bscscan-link-container">
+    <a href="https://bscscan.com/address/0xa7230462cf2e4a6328a25e7ffdd9af1a4955c28e#code" target="_blank" class="bscscan-link">
+        <i class="fas fa-check-circle"></i> VIEW VERIFIED CONTRACT CODE (BscScan)
+    </a>
+    <span class="ownership-status">
+        <i class="fas fa-lock"></i> Contract Ownership has been claimed on BscScan for official updates.
+    </span>
+</div>
 <p><a href="whitepaper/Hudiya-whitepaper.pdf" target="_blank" class="download-btn"><i class="fas fa-file-pdf"></i> Download Whitepaper</a></p>
 </section>
 
@@ -334,25 +382,27 @@ footer {
 <h2>Meet The Team</h2>
 
 <div class="team-member-card">
-    <div class="member-image-container">
-      <img src="assets/prince.jpg" alt="Image of Prince Jonathan">
-    </div>
-    <div class="member-info">
-        <h3>Prince Jonathan</h3>
-        <span class="role">Creator </span>
-        <p>Visionary behind HUDIYA, leading the project's strategy, development, and long-term ecosystem growth. Committed to delivering a truly scarce and utility-driven digital asset.</p>
-    </div>
+    <div class="member-image-container">
+      <img src="assets/prince.jpg" alt="Image of Prince Jonathan">
+    </div>
+    <div class="member-info">
+        <h3>Prince Jonathan</h3>
+        <span class="role">Creator </span>
+        <p>Visionary behind HUDIYA, leading the project's strategy, development, and long-term ecosystem growth. Committed to delivering a truly scarce and utility-driven digital asset.</p>
+    </div>
 </div>
 
 <div class="team-member-card team-expansion">
-    <i class="fas fa-user-plus" style="margin-right: 10px;"></i> 
-    We are actively expanding our team! Interested in joining the HUDIYA vision?
+    <i class="fas fa-user-plus" style="margin-right: 10px;"></i> 
+    We are actively expanding our team! Interested in joining the HUDIYA vision?
 </div>
+
+
 
 </section><section id="tokenomics" class="tokenomics-section">
     <div class="tokenomics-info">
         <h2>Tokenomics & Fixed Scarcity</h2>
-        <p>HUD is a scarce asset with a fixed total supply of <b>61,000,000 HUD tokens</b>.</p>
+        <p>HUD is a scarce asset with a fixed total supply of 61,000,000 HUD tokens.</p>
         <table class="tokenomics-table">
             <thead>
                 <tr>
@@ -367,19 +417,19 @@ footer {
                     <td data-label="Category">🔓 Liquidity</td>
                     <td data-label="Amount">19,825,000</td>
                     <td data-label="Percentage">32.5%</td>
-                    <td data-label="Purpose">Initial live trading liquidity</td>
+                    <td data-label="Purpose">Initial live trading liquidity (Locked)</td>
                 </tr>
                 <tr>
                     <td data-label="Category">👤 Founder</td>
                     <td data-label="Amount">6,100,000</td>
                     <td data-label="Percentage">10%</td>
-                    <td data-label="Purpose">Personal ownership</td>
+                    <td data-label="Purpose">Personal ownership (subject to vesting)</td>
                 </tr>
                 <tr>
                     <td data-label="Category">👤 CEX Listings</td>
                     <td data-label="Amount">27,450,000</td>
                     <td data-label="Percentage">45%</td>
-                    <td data-label="Purpose">Liquidity & exchange listing</td>
+                    <td data-label="Purpose">Exchange liquidity and listing fees (Secured)</td>
                 </tr>
                 <tr>
                     <td data-label="Category">📣 Marketing/Airdrops</td>
@@ -391,7 +441,7 @@ footer {
                     <td data-label="Category">🏦 Team & Management</td>
                     <td data-label="Amount">4,575,000</td>
                     <td data-label="Percentage">7.5%</td>
-                    <td data-label="Purpose">Salaries & bonuses</td>
+                    <td data-label="Purpose">Salaries & bonuses (subject to vesting)</td>
                 </tr>
                 <tr class="total-row">
                     <td>Total</td>
@@ -409,8 +459,8 @@ footer {
 <h2>Roadmap</h2>
 <h3>Phase 1: Foundation & Community (2025)</h3>
 <ul>
-<li>Smart contract deployment & verification</li>
-<li>Whitepaper release & liquidity</li>
+<li>Smart contract deployment & BscScan verification</li>
+<li>Whitepaper release & liquidity lock</li>
 <li>Community formation</li>
 </ul>
 <h3>Phase 2: Utility & Growth (2026)</h3>
@@ -452,10 +502,10 @@ navToggle.addEventListener('click', () => { navLinks.classList.toggle('active');
 let lastScroll = 0;
 const stickyNav = document.getElementById('sticky-nav-wrapper');
 window.addEventListener('scroll', () => {
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    if(currentScroll > lastScroll && currentScroll > 100){ stickyNav.classList.add('hidden'); } 
-    else { stickyNav.classList.remove('hidden'); }
-    lastScroll = currentScroll;
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if(currentScroll > lastScroll && currentScroll > 100){ stickyNav.classList.add('hidden'); } 
+    else { stickyNav.classList.remove('hidden'); }
+    lastScroll = currentScroll;
 });
 </script>
 
